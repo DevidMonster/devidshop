@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/devidshop/static/css/main.3f08a6b1.css",
+    "main.js": "/devidshop/static/js/main.1a08d93b.js",
+    "static/js/787.1521c1ea.chunk.js": "/devidshop/static/js/787.1521c1ea.chunk.js",
+    "static/media/logo_white_devidshop.jpg": "/devidshop/static/media/logo_white_devidshop.6f788be566a2d8f6162c.jpg",
+    "static/media/Logo_devidshop.png": "/devidshop/static/media/Logo_devidshop.346828ea36ef3af5fc9b.png",
+    "index.html": "/devidshop/index.html",
+    "main.3f08a6b1.css.map": "/devidshop/static/css/main.3f08a6b1.css.map",
+    "main.1a08d93b.js.map": "/devidshop/static/js/main.1a08d93b.js.map",
+    "787.1521c1ea.chunk.js.map": "/devidshop/static/js/787.1521c1ea.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f08a6b1.css",
+    "static/js/main.1a08d93b.js"
+  ]
+}
