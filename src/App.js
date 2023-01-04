@@ -1,24 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+// import { useState, useEffect } from "react";
+// import * as request from './utils/httpRequest';
+import { Fragment } from 'react';
+import { useSelector } from "react-redux";
+import styles from "./App.module.scss"
+import classNames from "classnames/bind";
+import DefaultLayout from "./layouts/DefaultLayout";
+import { publicRoutes } from "./routes";
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
+
+const cx = classNames.bind(styles)
 
 function App() {
+  
+
+  let mode = useSelector(state => state.active) || false
+  if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
+  // const [data, setData] = useState([])
+  // useEffect( () => {
+  //   const fetchAPI = async function() {
+  //     const dataResult = await request.get("/item", {
+  //     })
+  //     setData(dataResult)
+  //   }
+  //   fetchAPI()
+  // }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className={cx("app", { dark_mode: mode })}>
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              let Layout = DefaultLayout
+              const Page = route.component
+
+              if (route.layout) {
+                Layout = route.layout;
+              } else if (route.layout === null) {
+                  Layout = Fragment;
+              }
+
+              return (
+                <Route 
+                  key={index}
+                  path={route.path} 
+                  element={
+                    <Layout>
+                      <Page/>
+                    </Layout>
+                }/>
+              )
+
+            })}
+          </Routes>
+      </div>
+    </Router>
   );
 }
 
