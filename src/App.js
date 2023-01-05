@@ -1,5 +1,4 @@
-// import { useState, useEffect } from "react";
-// import * as request from './utils/httpRequest';
+
 import { Fragment } from 'react';
 import { useSelector } from "react-redux";
 import styles from "./App.module.scss"
@@ -12,18 +11,11 @@ const cx = classNames.bind(styles)
 
 function App() {
   
-
   let mode = useSelector(state => state.active) || false
+
   if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
-  // const [data, setData] = useState([])
-  // useEffect( () => {
-  //   const fetchAPI = async function() {
-  //     const dataResult = await request.get("/item", {
-  //     })
-  //     setData(dataResult)
-  //   }
-  //   fetchAPI()
-  // }, [])
+  
+
 
   return (
     <Router>

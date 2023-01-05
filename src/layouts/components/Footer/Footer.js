@@ -3,6 +3,8 @@ import classNames from 'classnames/bind';
 import images from '../../../asset/images';
 
 import Button from '../../../components/Button/Button';
+import { BsYoutube, BsFacebook } from 'react-icons/bs'
+import { FaTiktok } from 'react-icons/fa'
 
 import { useSelector } from "react-redux";
 
@@ -27,6 +29,22 @@ function Footer() {
             </div>
         </div>
         <div className={cx("bottom")}>
+            <p className={cx("copyright")}>
+                © 2022 - 2023 DevidShop. Nền tảng mua sắm quần áo
+            </p>
+            <div className={cx("hyperlink")}> 
+                <a className={cx("yt_link")} href='https://youtube.com' target="_blank" rel="noopener noreferrer">
+                    <BsYoutube/>
+                </a>
+                <a className={cx("fb_link")} href='https://facebook.com' target="_blank" rel="noopener noreferrer">
+                    <BsFacebook/>
+                </a>
+                <a className={cx("tt_link")} href='https://tiktok.com' target="_blank" rel="noopener noreferrer">
+                    <FaTiktok/>
+                </a>
+            </div>
+        </div>
+        <div className={cx("mg_bottom")}>
 
         </div>
     </div>);

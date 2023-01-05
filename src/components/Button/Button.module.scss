@@ -1,7 +1,7 @@
 .wrapper {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     min-width: 100px;
     padding: 9px 16px;
     border-radius: 4px;
@@ -13,6 +13,7 @@
     background-color: var(--bg-content-color);
     user-select: none;
     color: var(--text-color);
+    text-decoration: none;
 
     + .wrapper {
         margin-left: 5px;
@@ -63,10 +64,28 @@
 
 .text {
     background: transparent;
-
+    
     &:hover {
-        text-decoration: underline;
+        background-color: var(--bg-content-color);
     }
+}
+
+//icon
+.left-icon {
+    margin-right: 12px;
+}
+
+.right-icon {
+    margin-left: 12px;
+}
+
+.isIcon {
+    padding: 18px;
+    min-width: unset;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    justify-content: center;
 }
 
 //Button Size

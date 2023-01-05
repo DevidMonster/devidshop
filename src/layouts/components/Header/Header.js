@@ -3,17 +3,21 @@ import classNames from "classnames/bind";
 
 import { useDispatch, useSelector } from "react-redux";
 import { switchMode } from "../../../redux/actions";
-import { BsCart2 } from 'react-icons/bs'
+import { BsCart2, FaBell, FaUserCircle } from '../../../asset/icons'
+import Tippy from '@tippyjs/react/headless';
+import { Wrapper } from "../../../components/popper";
 
 import images from "../../../asset/images";
 
 import Button from "../../../components/Button/Button";
 import Search from "./Search";
 
+
 const cx = classNames.bind(styles)
 
 function Header() {
     const user = localStorage.getItem("user")
+    
     let mode = useSelector(state => state.active) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
 
@@ -22,6 +26,21 @@ function Header() {
     const handleSwitch = () => {
         dispatch(switchMode(mode))
     }
+
+    const renderAlert = (attrs) => (
+        <div className={cx('alert-list')} tabIndex="-1" {...attrs}>
+            <Wrapper>
+            </Wrapper>
+        </div>
+    );
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <Wrapper>
+                <Button className={cx("fix")} leftIcon={<FaUserCircle />} text to={'/account'}>Tài Khoản</Button> 
+            </Wrapper>
+        </div>
+    );
 
     return <header className={cx('header_wrapper')}>
         <div className={cx('logo_box')} >
@@ -38,15 +57,44 @@ function Header() {
                     <span className={cx("change_state_mode")}></span>
                 </label>
             </div>
-            <Button leftIcon={<BsCart2/>}>
-                View Cart
-            </Button>
+            <div className={cx("cart_view")}>
+                <Button icon={<BsCart2/>} to={"/cart"}/>
+                <span className={cx("total_item")}>0</span>
+            </div>
+            <div>
+                <div className={cx("notification")}>
+                <div>
+                    <Tippy
+                        interactive
+                        hideOnClick
+                        theme={mode ? 'light' : 'material'}
+                        trigger="click"
+                        placement="bottom-end"
+                        render={(attrs) => renderAlert(attrs)}
+                    >
+                            <div><Button icon={<FaBell />} /></div>
+                    </Tippy>
+                </div>
+                        <span className={cx("total_alert")}>0</span>
+                    </div>
+           </div>
             {user ? (
-                <div className={cx("account")}>
-                        <div className={cx("avatar")}>
-                            <img src={images.user} alt="User_Avatar"/>
+                <div>
+                    <Tippy
+                        interactive
+                        hideOnClick
+                        theme={mode ? 'light' : 'material'}
+                        trigger="click"
+                        placement="bottom-end"
+                        render={(attrs) => renderResult(attrs)}
+                    >
+                        <div className={cx("account")}>
+                                <div className={cx("avatar")}>
+                                    <img src={images.user} alt="User_Avatar"/>
+                                </div>
+                                <p>DevidMonster</p>
                         </div>
-                        <p>DevidMonster</p>
+                    </Tippy>
                 </div>
             ) : (
                 <div className={cx("signIn_signUp")}>

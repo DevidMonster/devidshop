@@ -8,6 +8,7 @@ const rootReducer = (state = initState, action) => {
             let newState = !action.payload
             localStorage.setItem('mode', newState)
             return {
+                ...state,
                 active: newState
             }
         default :

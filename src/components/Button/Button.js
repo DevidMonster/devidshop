@@ -19,6 +19,7 @@ function Button({
     className,
     leftIcon,
     rightIcon,
+    icon,
     onClick,
     ...passProps
 }) {
@@ -36,7 +37,10 @@ function Button({
             }
         });
     }
-
+    let active = false
+    if(icon) {
+        active = true
+    }
     if (to) {
         props.to = to;
         Comp = Link;
@@ -47,6 +51,7 @@ function Button({
 
     const classes = cx('wrapper', {
         [className]: className,
+        isIcon: active,
         primary,
         outline,
         small,
@@ -59,9 +64,9 @@ function Button({
 
     return (
         <Comp className={classes} {...props}>
-            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
-            <span>{children}</span>
-            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
+            {leftIcon && <span className={cx('left-icon')}>{leftIcon}</span>}
+            <span>{children}{icon && <span className={cx('icon')}>{icon}</span>}</span>
+            {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}
         </Comp>
     );
 }
