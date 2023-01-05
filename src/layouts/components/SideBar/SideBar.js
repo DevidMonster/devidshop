@@ -2,7 +2,8 @@ import styles from './SideBar.module.scss';
 import classNames from 'classnames/bind';
 import GroupMenu, { MenuItem } from './GroupMenu';
 import {  } from 'react-icons/ai';
-import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount } from '../../../asset/icons';
+import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount, MdOutlineFavoriteBorder } from '../../../asset/icons';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -21,16 +22,9 @@ function SideBar() {
                 </GroupMenu>
                 <GroupMenu className={cx("sidebar_subnav")}>
                     <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
+                    <MenuItem to={"/favorite"} icon={<MdOutlineFavoriteBorder />} title={"Favorite"}/>
+                    <></>
                 </GroupMenu>
-                <GroupMenu></GroupMenu>
                 <GroupMenu></GroupMenu>
             </div>
         </aside>
