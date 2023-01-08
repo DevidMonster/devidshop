@@ -1,6 +1,5 @@
 import styles from './GroupMenu.module.scss';
 import classNames from 'classnames/bind';
-import { Children } from 'react';
 
 const cx = classNames.bind(styles)
 

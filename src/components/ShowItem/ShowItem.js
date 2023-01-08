@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function ShowItem({ data }) {
     return (
         <Link to={`/detail/${data.id}`} className={cx('wrapper')}>
-            <img className={cx('image')} src={data.images}/>
+            <img className={cx('image')} src={data.images} alt={data.name}/>
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
                     {data.name}

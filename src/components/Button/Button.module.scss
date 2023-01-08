@@ -15,6 +15,11 @@
     color: var(--text-color);
     text-decoration: none;
 
+    .title {
+        width: 100%;
+        text-align: center;
+    }
+
     + .wrapper {
         margin-left: 5px;
     }

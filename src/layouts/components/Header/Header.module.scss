@@ -54,11 +54,10 @@
    transition: background-color 0.5s ease-in-out;
 
    &::before {
-        content: "☀";
-        color: yellow;
+        content: "🌞";
         text-align: center;
         line-height: 26px;
-        font-size: 3rem;
+        font-size: 2rem;
         position: absolute;
         height: 26px;
         width: 26px;
@@ -100,10 +99,25 @@
 }
 
 .action_box {
-     width: 330px;
+     width: 440px;
      display: flex;
      align-items: center;
      justify-content: space-around;
+
+     .current-time {
+          font-size: 1.4rem;
+          font-weight: 500;
+
+          .time {
+               color: var(--text-color);
+          }
+
+          .day-state {
+               display: inline-block;
+               font-size: 2rem;
+               animation: textRotate 4s linear infinite;
+          }
+     }
 
      .cart_view {
           display: inline-block;
@@ -145,18 +159,23 @@
 }
 
 .account {
+     width: 181px;
      display: flex;
      align-items: center;
-     justify-content: space-around;
+     gap: 10px;
      gap: 10px;
      transition: background-color 0.3s ease-in-out;
      border-radius: 25px;
      padding: 5px;
 
-     & img {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
+     & .avatar {
+          display: flex;
+          align-items: center;
+          img {
+               width: 40px;
+               height: 40px;
+               border-radius: 50%;
+          }
      }
 
      & p {
@@ -182,7 +201,20 @@
           font-size: 2rem;
      }
 
+     & span:nth-child(2) {
+          text-align: left;
+     }
+
      & span:nth-child(3) {
           font-size: 2rem;
+     }
+}
+
+@keyframes textRotate {
+     0% {
+          transform: rotate(0);
+     }
+     100% {
+          transform: rotate(360deg);
      }
 }

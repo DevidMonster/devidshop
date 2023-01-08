@@ -1,11 +1,11 @@
 
-import { Fragment, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { Fragment } from 'react';
+import { useSelector } from "react-redux";
 import styles from "./App.module.scss"
 import classNames from "classnames/bind";
 import DefaultLayout from "./layouts/DefaultLayout";
 import { publicRoutes } from "./routes";
-import { BrowserRouter as Router,Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
 // import { saveURL } from './redux/actions';
 import CheckURL from './components/CheckURL';
 

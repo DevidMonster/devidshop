@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState, memo } from 'react';
 import { saveURL } from '../../redux/actions';
 
@@ -14,6 +14,8 @@ function CheckURL() {
       // Hàm này sẽ được chạy mỗi khi pathname thay đổi và sẽ lưu pathname trước đó
       setPrevUrl(location.pathname)
       dispatch(saveURL(prevUrl));
+
+      // eslint-disable-next-line
     }, [location.pathname]);
   
     return (<></>);

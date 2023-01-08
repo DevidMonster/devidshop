@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import GroupMenu, { MenuItem } from './GroupMenu';
 import {  } from 'react-icons/ai';
 import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount, MdOutlineFavoriteBorder, MdOndemandVideo } from '../../../asset/icons';
-import { useEffect } from 'react';
 import BoxContent from './BoxContent';
 
 const cx = classNames.bind(styles)

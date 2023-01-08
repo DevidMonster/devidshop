@@ -9,7 +9,7 @@ import {MdOutlineCancel} from 'react-icons/md'
 import { BsSearch } from "react-icons/bs"
 import { Wrapper as PopperWrapper } from "../../../../components/popper"
 
-import { useEffect, useState, useRef, Fragment } from 'react';
+import { useEffect, useState, useRef, memo } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -38,9 +38,10 @@ function Search() {
             const dataResult = await request.get("/item", {
                 params: {
                     name: resultValue
-                }
+                },
             })
             setSearchResult(dataResult)
+            
             setShowSpinner(false);
         }
         fetchAPI()
@@ -109,4 +110,4 @@ console.log(searchResult)
     );
 }
 
-export default Search;
+export default memo(Search);

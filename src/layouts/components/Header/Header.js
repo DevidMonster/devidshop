@@ -11,13 +11,15 @@ import images from "../../../asset/images";
 
 import Button from "../../../components/Button/Button";
 import Search from "./Search";
+import { useEffect, useState } from "react";
 
 
 const cx = classNames.bind(styles)
 
 function Header() {
-    const user = localStorage.getItem("user")
-    
+    const user = true  //localStorage.getItem("user") || false
+    const [time, setTime] = useState("")
+    const [night, setNight] = useState()
     let mode = useSelector(state => state.active) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
 
@@ -33,6 +35,25 @@ function Header() {
             </Wrapper>
         </div>
     );
+    useEffect(() => {
+        const currentTimeSet = setInterval(() => {
+          const currentTime = new Date();
+          const curentHours = currentTime.getHours()
+          let i = 0;
+          if(curentHours >= 18 && curentHours < 5 && i === 0) {
+            i = 1;
+            dispatch(switchMode(false));
+          } else if(curentHours >= 5 && curentHours < 18 && i === 1) {
+            i = 0;
+            dispatch(switchMode(true));
+          }
+          setNight(curentHours >= 5 && curentHours < 18 ? false : true)
+          setTime(currentTime.toLocaleTimeString(undefined, {hour: '2-digit', minute: '2-digit'}));
+        }, 1000);
+      
+        // Trả về một hàm để clearInterval khi component unmount
+        return () => clearInterval(currentTimeSet);
+    });
 
     const renderResult = (attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -51,6 +72,7 @@ function Header() {
         </div>
         <Search />
         <div className={cx('action_box')}>
+            <div className={cx('current-time')}><span className={cx('time')}>{time}</span> <span className={cx('day-state')}>{night ? '🌑' : '🌞'}</span></div>
             <div className={cx("mode")}>
                 <label htmlFor="switch" className={cx("switch-mode")}>
                     <input type="checkbox" id="switch" className={cx("switch-checkbox")} checked={mode} onChange={e => handleSwitch()}/>
@@ -98,8 +120,8 @@ function Header() {
                 </div>
             ) : (
                 <div className={cx("signIn_signUp")}>
-                        <Button outline>SignIn</Button>
-                        <Button>SignUp</Button>
+                        <Button outline small>SignIn</Button>
+                        <Button small>SignUp</Button>
                 </div>
             )}
         </div>  
