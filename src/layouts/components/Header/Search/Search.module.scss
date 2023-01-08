@@ -1,5 +1,9 @@
-.search,
-.search-result {
+.wrapper,.search-result {
+    width: calc((30/100) * 100vw);
+
+}
+
+.search {
     width: 100%;
 }
 

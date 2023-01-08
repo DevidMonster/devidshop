@@ -2,8 +2,9 @@ import styles from './SideBar.module.scss';
 import classNames from 'classnames/bind';
 import GroupMenu, { MenuItem } from './GroupMenu';
 import {  } from 'react-icons/ai';
-import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount, MdOutlineFavoriteBorder } from '../../../asset/icons';
+import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount, MdOutlineFavoriteBorder, MdOndemandVideo } from '../../../asset/icons';
 import { useEffect } from 'react';
+import BoxContent from './BoxContent';
 
 const cx = classNames.bind(styles)
 
@@ -21,10 +22,12 @@ function SideBar() {
                     <MenuItem to={"/contact"} icon={<AiFillPhone />} title={"Contact"}/>
                 </GroupMenu>
                 <GroupMenu className={cx("sidebar_subnav")}>
-                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"sale code"}/>
+                    <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"Sale code"}/>
                     <MenuItem to={"/favorite"} icon={<MdOutlineFavoriteBorder />} title={"Favorite"}/>
-                    <></>
+                    <BoxContent/>
+                    <MenuItem to={"/film"} icon={<MdOndemandVideo />} title={"Short Film"}/>
                 </GroupMenu>
+                <GroupMenu></GroupMenu>
                 <GroupMenu></GroupMenu>
             </div>
         </aside>

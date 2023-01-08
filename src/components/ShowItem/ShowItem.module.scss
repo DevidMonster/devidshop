@@ -4,14 +4,14 @@
     padding: 9px 16px;
     cursor: pointer;
     transition: background-color 200ms ease-in-out 0s;
-
+    text-decoration: none !important;
     &:hover {
-        background-color: rgba(22, 24, 35, 0.03);
+        background-color: var(--bg-content-color);
     }
 }
 
 .image {
-    border-radius: 50%;
+    border-radius: 8px;
     overflow: hidden;
     width: 40px;
     height: 40px;
@@ -19,6 +19,7 @@
 }
 
 .info {
+
     flex: 1;
     margin-left: 12px;
 }
@@ -26,16 +27,11 @@
 .name {
     font-size: 1.4rem;
     font-weight: 600;
+    color: var(--text-color);
 }
 
-.check {
-    margin-left: 8px;
-    font-size: 1.2rem;
-    color: rgb(32, 213, 236);
+.price {
+    font-size: 1rem;
+    color: var(--text-color);
 }
 
-.username {
-    font-size: 1.4rem;
-    color: rgba(22, 24, 35, 0.5);
-    font-weight: 600;
-}

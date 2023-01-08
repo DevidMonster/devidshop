@@ -6,12 +6,15 @@ const cx = classNames.bind(styles);
 
 function ShowItem({ data }) {
     return (
-        <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
-            <img className={cx('image')} src={data.image}/>
+        <Link to={`/detail/${data.id}`} className={cx('wrapper')}>
+            <img className={cx('image')} src={data.images}/>
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span>{data.name}</span>
+                    {data.name}
                 </h4>
+                <p className={cx('price')}>
+                    {data.price}$
+                </p>
             </div>
         </Link>
     );

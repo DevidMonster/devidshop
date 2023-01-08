@@ -11,6 +11,14 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 active: newState
             }
+        case "SAVE":
+            // lưu URL
+            localStorage.setItem('prevUrl', action.payload);
+            return {
+                ...state,
+                // Thêm thuộc tính URL mới vào state
+                prevUrl: action.payload,
+            };
         default :
             return state
             

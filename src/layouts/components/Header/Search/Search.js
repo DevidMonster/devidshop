@@ -9,9 +9,10 @@ import {MdOutlineCancel} from 'react-icons/md'
 import { BsSearch } from "react-icons/bs"
 import { Wrapper as PopperWrapper } from "../../../../components/popper"
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
@@ -24,6 +25,7 @@ function Search() {
     let mode = useSelector(state => state.active) || false
 
     const resultValue = useDebounce(searchValue, 500);
+    const navigate = useNavigate()
 
     useEffect( () => {
         if (!resultValue.trim()) {
@@ -33,7 +35,11 @@ function Search() {
 
         const fetchAPI = async () => {
             setShowSpinner(true);
-            const dataResult = await request.get("/item")
+            const dataResult = await request.get("/item", {
+                params: {
+                    name: resultValue
+                }
+            })
             setSearchResult(dataResult)
             setShowSpinner(false);
         }
@@ -54,17 +60,22 @@ function Search() {
         }
     };
 
+    const handleNavigate = () => {
+        setSearchValue("")
+        navigate(`/product/${searchValue}`)
+    }
+
     const inputRef = useRef();
 console.log(searchResult)
     return ( 
-        <div style={{ width: "30%" }}>
+        <div className={cx("wrapper")}>
             <HeadlessTippy
                 interactive
                 theme={mode ? 'light' : 'material'}
                 visible={showResult && searchResult.length > 0}
                 render={(attrs) => (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <PopperWrapper>
+                        <PopperWrapper className={cx("result-item")}>
                             <h4 className={cx('search-title')}>Items</h4>
                             <SearchResult value={searchResult} />
                         </PopperWrapper>
@@ -89,7 +100,7 @@ console.log(searchResult)
                         </button>
                     )}
                     {showSpinner && <AiOutlineLoading3Quarters className={cx('loading')}/>}
-                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                    <button className={cx('search-btn')} onClick={() => handleNavigate()}>
                         <BsSearch />
                     </button>
                 </div>

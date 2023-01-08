@@ -4,3 +4,10 @@ export const switchMode = (data) => {
         payload: data
     } 
 }
+
+export const saveURL = (data) => {
+    return {
+        type: 'SAVE',
+        payload: data
+    }
+}
