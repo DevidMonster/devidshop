@@ -1,12 +1,10 @@
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState, memo, useCallback } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { saveURL } from '../../redux/actions';
 
 function CheckURL() {
-    let url = useSelector(state => state.prevUrl)
-    const [prevUrl, setPrevUrl]= useState(null)
-    console.log(url)
+    const [prevUrl, setPrevUrl]= useState(localStorage.getItem("prevUrl") ||  '/')
 
     const dispatch = useDispatch()
 

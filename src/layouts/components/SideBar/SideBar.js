@@ -27,8 +27,6 @@ function SideBar() {
                     <BoxContent/>
                     <MenuItem to={"/film"} icon={<MdOndemandVideo />} title={"Short Film"}/>
                 </GroupMenu>
-                <GroupMenu></GroupMenu>
-                <GroupMenu></GroupMenu>
             </div>
         </aside>
     );

@@ -11,9 +11,9 @@ function BoxContent() {
         <div className={cx("wrapper")}>
             <div className={cx("content_box")}>
                 <p className={cx('title')}>
-                    Nhận ngay ưu đãi 50% cho mọi loại đơn
+                    50% off all orders now
                 </p>
-                <button className={cx("action")} onClick={() => navigate("/login")}>Đăng Ký Ngay</button>
+                <button className={cx("action")} onClick={() => navigate("/login")}>Register now</button>
             </div>
         </div>
     );

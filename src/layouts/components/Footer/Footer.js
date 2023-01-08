@@ -24,13 +24,13 @@ function Footer() {
                     </Button>
                 </div>
                 <p className={cx("contact-list")}>
-                    Điện thoại: <a href='tel:0396.626.650'>0396265650</a><br/>Email: <a href='mailto: mrabt905@gmail.com'>mrbat905@gmail.com</a><br/>Địa chỉ: Nhà số 46, Phố Hàng Bồ, Quận Hoàn Kiếm, Thành Phố Hà Nội
+                    Phone number: <a href='tel:0396.626.650'>0396265650</a><br/>Email: <a href='mailto: mrabt905@gmail.com'>mrbat905@gmail.com</a><br/>Address: Nhà số 46, Phố Hàng Bồ, Quận Hoàn Kiếm, Thành Phố Hà Nội
                 </p>
             </div>
         </div>
         <div className={cx("bottom")}>
             <p className={cx("copyright")}>
-                © 2022 - 2023 DevidShop. Nền tảng mua sắm quần áo
+                © 2022 - 2023 DevidShop. Clothing shopping platform
             </p>
             <div className={cx("hyperlink")}> 
                 <a className={cx("yt_link")} href='https://youtube.com' target="_blank" rel="noopener noreferrer">
