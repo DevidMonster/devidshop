@@ -11,3 +11,10 @@ export const saveURL = (data) => {
         payload: data
     }
 }
+
+export const deleteSearch = (data) => {
+    return {
+        type: 'DELETE_SEARCH',
+        payload: data
+    }
+}

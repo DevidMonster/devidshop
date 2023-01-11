@@ -38,16 +38,17 @@ function Header() {
     useEffect(() => {
         const currentTimeSet = setInterval(() => {
           const currentTime = new Date();
-          const curentHours = currentTime.getHours()
-          let i = 0;
-          if(curentHours >= 18 && curentHours < 5 && i === 0) {
-            i = 1;
+          const currentHours = currentTime.getHours()
+
+          if(currentHours >= 18 && currentHours < 5 && mode === false) {
             dispatch(switchMode(false));
-          } else if(curentHours >= 5 && curentHours < 18 && i === 1) {
-            i = 0;
+          }
+          
+          if(currentHours >= 5 && currentHours < 18 && mode === true && !localStorage.getItem('mode')) {
             dispatch(switchMode(true));
           }
-          setNight(curentHours >= 5 && curentHours < 18 ? false : true)
+          
+          setNight(currentHours >= 5 && currentHours < 18 ? false : true)
           setTime(currentTime.toLocaleTimeString(undefined, {hour: '2-digit', minute: '2-digit'}));
         }, 1000);
       
