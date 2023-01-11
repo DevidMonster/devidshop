@@ -1,5 +1,9 @@
+import Banner from "../Home/Banner";
+
 function Product() {
-    return <div>Product</div>;
+    return (
+        <Banner/>
+    );
 }
 
 export default Product;

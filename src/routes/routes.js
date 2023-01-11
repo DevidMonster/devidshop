@@ -8,7 +8,7 @@ import Product from "../pages/Product";
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
-    { path: config.routes.product, component: Product },
+    { path: config.routes.product, component: Product, layout: null },
     { path: config.routes.detail, component: Product },
     { path: config.routes.search, component: Product },
     { path: config.routes.about, component: Product },
