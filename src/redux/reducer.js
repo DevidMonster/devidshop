@@ -26,7 +26,6 @@ const rootReducer = (state = initState, action) => {
                 currentData = []
             } else {
                 currentData.splice(action.payload, 1)
-                console.log(currentData)
                 localStorage.setItem("searchHistory", JSON.stringify(currentData))
             }
             return {

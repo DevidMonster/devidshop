@@ -26,8 +26,8 @@ function Search() {
     const [searchData, setSearchData] = useState(JSON.parse(localStorage.getItem("searchHistory")) || [])
     const resultValue = useDebounce(searchValue, 500);
     
-    console.log(searchData)
     const navigate = useNavigate()
+
 
     useEffect(()=> {
         if(!!state.data) {
@@ -47,9 +47,7 @@ function Search() {
                 params: {
                     name: resultValue
                 },
-            }).catch(
-                setShowSpinner(false)
-            )
+            })
             setSearchResult(dataResult)
             
             setShowSpinner(false);
@@ -71,17 +69,27 @@ function Search() {
         }
     };
 
-
+    
     const handleNavigate = () => {
-        let searchHistory = []
-        searchHistory = [searchValue]
-        if(!!searchData) {
-            searchHistory = [...searchData, searchValue]
+        if(searchValue !== "") {
+            let searchHistory = []
+            searchHistory = [searchValue]
+            if(!!searchData) {
+                searchHistory = [searchValue, ...searchData]
+            }
+            localStorage.setItem("searchHistory", JSON.stringify(searchHistory))
+            setSearchData(searchHistory)
+            setSearchValue("")
+            setShowResult(false)
+            navigate(`/product/${searchValue}`)
         }
-        localStorage.setItem("searchHistory", JSON.stringify(searchHistory))
-        setSearchData(searchHistory)
-        setSearchValue("")
-        navigate(`/product/${searchValue}`)
+    }
+
+    const handleKeyDown = (e) => {
+        if(e.key === 'Enter' && searchValue !== "") {
+            inputRef.current.blur()
+            handleNavigate()
+        } 
     }
 
     const inputRef = useRef();
@@ -97,16 +105,16 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper className={cx("result-item")}>
                             { searchData.length > 0 && (
-                                <>
+                                <div className={cx('search-box_less')}>
                                     <h4 className={cx('search-title')}>History</h4>
                                     <SearchHistory historyData={searchData}/>
-                                </>
+                                </div>
                             )}
                             { searchResult.length > 0 && (
-                                <>
+                                <div className={cx('search-box_less')}>
                                     <h4 className={cx('search-title')}>Items</h4>
                                     <SearchResult  value={searchResult} />
-                                </>
+                                </div>
                             )}
                         </PopperWrapper>
                     </div>
@@ -120,6 +128,7 @@ function Search() {
                         placeholder="Search item ..."
                         spellCheck={false}
                         onChange={handleChange}
+                        onKeyDown={e => handleKeyDown(e)}
                         onFocus={() => {
                             setShowResult(true);
                         }}

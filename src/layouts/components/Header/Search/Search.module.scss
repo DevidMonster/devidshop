@@ -106,3 +106,13 @@
         border-color: transparent;
     }
 }
+
+
+.search-box_less {
+    max-height: calc(71.5px * 2.7);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    perspective: 1px;
+    transform-style: preserve-3d;
+}

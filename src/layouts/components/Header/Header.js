@@ -1,17 +1,17 @@
-import styles from "./Header.module.scss";
 import classNames from "classnames/bind";
+import styles from "./Header.module.scss";
 
-import { useDispatch, useSelector } from "react-redux";
-import { switchMode } from "../../../redux/actions";
-import { BsCart2, FaBell, FaUserCircle } from '../../../asset/icons'
 import Tippy from '@tippyjs/react/headless';
+import { useDispatch, useSelector } from "react-redux";
+import { BsCart2, FaBell, FaUserCircle } from '../../../asset/icons';
 import { Wrapper } from "../../../components/popper";
+import { switchMode } from "../../../redux/actions";
 
 import images from "../../../asset/images";
 
+import { useEffect, useState } from "react";
 import Button from "../../../components/Button/Button";
 import Search from "./Search";
-import { useEffect, useState } from "react";
 
 
 const cx = classNames.bind(styles)
